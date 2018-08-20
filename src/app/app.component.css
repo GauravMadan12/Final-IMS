@@ -1,0 +1,35 @@
+ body{
+    height:100%;
+    width:100%;
+    /* background-color:#140f0a; */
+} 
+
+.navbar{
+    background-color: #140f0a;
+    padding:1% 0;
+    font-size: 1.2em;
+}
+
+ .navbar-brand{
+    /* min-height: 30px; */
+    padding:0 15px 5px;
+} 
+
+.navbar-dark .navbar-nav li a{
+    color:#ffb300;
+}
+
+.navbar-dark .navbar-nav li a:hover{
+    color:#140f0a;
+    background-color: #ffb300;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar{
+    background-color:red;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius:9px;
+    border-color:red;
+}

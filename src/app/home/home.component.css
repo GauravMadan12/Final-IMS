@@ -1,0 +1,52 @@
+
+
+body{
+    font-family: tahoma;
+
+}
+
+.hero{
+    position: absolute;
+    /* width:100%; */
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    /* color:#ffb300;
+     */
+     color:white;
+}
+
+.hero h1{
+    font-size: 400%;
+    font-weight:500;
+    text-align:center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 15px rgb(203, 238, 48);
+}
+
+header{
+    background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)) ,url('../../assets/Images/achievement-agreement-black-and-white-997718.jpg');
+    height:100vh;
+    background-position: center;
+    background-size: cover; 
+    background-attachment: fixed;
+    width:100%;
+}
+
+.jumbotron{
+    padding:1rem;
+    border-radius: 0;
+}
+
+::-webkit-scrollbar{
+    background-color:red;
+}
+
+::-webkit-scrollbar{
+    background-color:red;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius:9px;
+    border-color:red;
+}
