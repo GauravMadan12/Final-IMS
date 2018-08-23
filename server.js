@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const passport = require('passport')
 
 const api = require('./server/routes/api');
 
@@ -13,6 +14,10 @@ app.use(express.static(path.join(__dirname,'dist/ims')));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+app.use(passport.initialize())
+app.use(passport.session())
+
+require('./server/config/passport')(passport);
 app.use('/api',api);
 
 app.get('*',(req,res)=>{

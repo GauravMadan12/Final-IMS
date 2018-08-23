@@ -1,1 +1,50 @@
 <p>Register Works</p>
+<!-- <span *ngFor="let ele of regis">
+    {{ele.fname}}
+    {{ele.lname}}
+    {{ele.email}}
+    {{ele.password}}
+    {{ele.phone}}
+    
+</span> -->
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form #regform="ngForm" (ngSubmit)="onRegis(regform.value)">
+            <div class="form-group">
+                <input type="text" class="form-control" ngModel placeholder="Fname" name="fname" #fnameinput="ngModel" required>
+                <div *ngIf = "fnameinput.errors">
+                    <small  class = "text-danger"  *ngIf = "fnameinput.errors.required && fnameinput.touched">*Firstname is required</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ngModel placeholder="Lname" name="lname" #lnameinput="ngModel" required>
+                <div *ngIf = "lnameinput.errors">
+                    <small  class = "text-danger"  *ngIf = "lnameinput.errors.required && lnameinput.touched">*Lastname is required</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ngModel placeholder="Email" name="email" #emailinput="ngModel">
+                <!-- <div *ngIf = "emailinput.errors">
+                    <small class="text-danger" *ngIf = "emailinput.errors.required">*Email is required</small>
+                </div> -->
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" ngModel placeholder="Password" name="password" #passinput="ngModel" required minlength="5" maxlength="8">
+                <div *ngIf="passinput.errors">
+                    <small class = "text-info" *ngIf = "passinput.errors.minlength">Add
+                        {{ passinput.errors.minlength.requiredLength - passinput.errors.minlength.actualLength }} more char</small>
+                </div>    
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ngModel placeholder="Phone" name="phone" #phoneinput="ngModel" required minlength="10" maxlength="10">
+                <div *ngIf="phoneinput.errors">
+                    <small class = "text-info" *ngIf = "phoneinput.errors.minlength">*Phone Number must have 10 digits</small>
+                </div> 
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-primary btn-lg" [disabled] = "regform.invalid">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
