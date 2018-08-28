@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { ToasterService } from './toaster.service';
 
 
 @NgModule({
@@ -24,9 +24,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+   
   ],
-  providers: [],
+  providers: [ToasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

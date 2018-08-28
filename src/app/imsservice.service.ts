@@ -14,10 +14,12 @@ export class ImsserviceService {
   constructor(private _http:Http) { }
 
   getdata(val){
-    let headers = new Headers({'Content-Type':'application/json'})
-    let options = new RequestOptions({ headers:headers})
-    return this._http.post(this._getUrl, JSON.stringify(val),options)
-    .pipe(map((response: Response) => response.json()));
+ 
+      let headers = new Headers({'Content-Type':'application/json'})
+      let options = new RequestOptions({ headers:headers})
+      return this._http.post(this._getUrl, JSON.stringify(val),options)
+      .pipe(map((response: Response) => response.json()));
+
   }
 
   senddata(val){

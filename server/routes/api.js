@@ -35,7 +35,7 @@ router.post('/alldata',function(req,res,next){
         }
         else{
             res.json(insertedData)
-            window.alert("User Registered")
+            // window.alert("User Registered")
         }
     })
 })
