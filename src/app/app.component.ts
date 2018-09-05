@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { ImsserviceService } from './imsservice.service';
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
@@ -10,7 +10,7 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 })
 export class AppComponent {
   title = 'app';
-
+  value ;
   constructor(
     private imsserv:ImsserviceService,
     private router:Router,
@@ -22,5 +22,15 @@ export class AppComponent {
     this.flashmsg.show("You are now logged out",{cssClass:"alert-success",timeout:5000});
     this.router.navigate(['/login']);
     return false;
+  }
+
+  ngOnInit(){
+     const data = localStorage.getItem('id_token');
+     if(data == null){
+       this.value = false;
+     }else{
+       this.value = true;
+     }
+    console.log("Value is"+data)
   }
 }

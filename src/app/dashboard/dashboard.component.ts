@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ImsserviceService} from '../imsservice.service';
-import {Route} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,16 +9,21 @@ import {Route} from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  
+  user:Object;
   constructor(
     private imsserv:ImsserviceService,
     // private router:Route
   ) { }
 
   ngOnInit() {
-    this.imsserv.getProfile().subscribe(data =>
-    console.log(data)
-    );
+    this.imsserv.getProfile().subscribe(data => {
+      this.user = data.user;
+      console.log(data)
+    },
+    err => {
+      console.log(err)
+      return false;
+    });
   }
 
 }

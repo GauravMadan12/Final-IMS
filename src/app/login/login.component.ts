@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       if(resData.success){
           this.imsserv.storeUser(resData.token,resData.user)
           this.flashmsg.show("Login Successful",{cssClass:'alert-success',timeout:3000})
-          this.route.navigate(['/dashboard'])
+          this.route.navigate(['dashboard'])
              
 
       }else{

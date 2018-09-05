@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http,Response, Headers,RequestOptions} from '@angular/http';
 import { map } from 'rxjs/operators';
 import {Register} from './register';
+import {tokenNotExpired} from 'angular2-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -43,13 +44,17 @@ export class ImsserviceService {
   loadToken(){
     const token = localStorage.getItem('id_token');
     this.authToken = token;
-    console.log(token);
+    // console.log(token);
+  }
+
+  loggedIn(){
+    return tokenNotExpired('id_token');
   }
 
   storeUser(token,user){
     localStorage.setItem('id_token',token);
     localStorage.setItem('user',JSON.stringify(user));
-    console.log(user)
+    // console.log(user)
     this.authToken = token;
     this.user = user;
   }
