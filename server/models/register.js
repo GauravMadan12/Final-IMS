@@ -11,16 +11,17 @@ const regSchema = new Schema({
     saltSecret:String
 })
 
+const Regis = module.exports = mongoose.model('register',regSchema);
 
 
 // GetUserById
 module.exports.getUserById = function(id,callback){
-    regis.findById(id,callback);
+    Regis.findById(id,callback);
 }
 
-module.exports.getUserByEmail = function(email,callback){
+module.exports.getUserByUsername = function(email,callback){
     const query = {email:email}
-    regis.findOne(query,callback)
+    Regis.findOne(query,callback)
 }
 
 // Events
@@ -41,4 +42,3 @@ module.exports.comparePassword = function(candidatePassword,hash,callback){
     })
 }
 
-module.exports = mongoose.model('regis',regSchema,'register');

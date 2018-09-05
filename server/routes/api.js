@@ -40,42 +40,38 @@ router.post('/alldata',function(req,res,next){
     })
 })
 
-// Authenticate 
-    router.post('/authenticate',(req,res) =>{
-        const email = req.body.email;
-        const password = req.body.password;
-        Regis.findOne({email:email},(err,user)=>{
-            if(err) {console.log(err)}
-            if(!user){
-                return res.json({success:false, msg:"User not found"})
-            }
-            else
-            {
-             bcrypt.compare(password,user.password,(err,isMatch)=>{
-                if(err) {console.log(err)}
-                if(isMatch)
-                {
-                    const token = jwt.sign(user.toJSON(),config.secret,{
-                        expiresIn:608400
-                    })
+// Authenticate
+router.post('/authenticate',(req,res,next) =>{
+    const email = req.body.email;
+    const password =req.body.password;
 
-                        res.json({
-                        success:true,
-                        token:'JWT'+token,
-                        user:{
-                            id:user._id,
-                            name:user.fname,
-                            email:user.email
-                        }
-                    })
-                    }else
-                    {
-                      return res.json({success:false,msg:"Wrong Password"})
-                     }
-                })
-           }
-        })
+    Regis.getUserByUsername(email,(err,user)=>{
+        if(err) throw err;
+        if(!user){
+            return res.json({success:false,msg:"User not found"})
+        }
+     
+    Regis.comparePassword(password,user.password,(err,isMatch)=>{
+        if(err) throw err;
+        if(isMatch){
+            const token = jwt.sign({data:user},config.secret,{
+                expiresIn:604800
+            })
+            res.json({
+                success:true,
+                token:"JWT "+token,
+                user:{
+                    id:user._id,
+                    name:user.fname,
+                    email:user.email
+                }
+            })
+        }else{
+            return res.json({success:false,msg:"Wrong Password"})
+        }
+    })    
     })
+})
       
 // Profile
 router.get('/profile',passport.authenticate('jwt',{session:false}),(req,res,next)=>{

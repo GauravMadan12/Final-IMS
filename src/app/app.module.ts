@@ -9,7 +9,8 @@ import { LoginComponent } from './login/login.component';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ToasterService } from './toaster.service';
+import {FlashMessagesModule} from 'angular2-flash-messages';
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 
 @NgModule({
@@ -25,9 +26,9 @@ import { ToasterService } from './toaster.service';
     AppRoutingModule,
     HttpModule,
     FormsModule,
-   
+    FlashMessagesModule
   ],
-  providers: [ToasterService],
+  providers: [FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

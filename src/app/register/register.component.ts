@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Register} from './../register';
 import {ImsserviceService} from '../imsservice.service';
 import {ValidationService} from '../validation.service';
-import {ToasterService} from '../toaster.service';
+import {FlashMessagesService} from 'angular2-flash-messages';
+import {Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private _imsserv:ImsserviceService,
     private _validserv: ValidationService,
-    private _toastrserv:ToasterService
+    private _flashmsg:FlashMessagesService,
+    private _router:Router
   ) { }
 
   ngOnInit() {
@@ -33,12 +35,23 @@ export class RegisterComponent implements OnInit {
     //   this._toastrserv.Error("Please fill all the fields")
     // }else
     if(!this._validserv.isValid(val.email)){
-      this._toastrserv.Error("Please enter a valid email")
+      this._flashmsg.show("Please enter a Valid Email",{cssClass:'alert-danger',timeout:6000})
     }
     else if(!this._validserv.isNumber(val.phone)){
-      this._toastrserv.Error("Please enter a valid phone number")
+      this._flashmsg.show("Please enter a Valid phone number",{cssClass:'alert-danger',timeout:6000})
+
     }else{
-    this._imsserv.getdata(val).subscribe(resData => console.log(resData))
+      
+    this._imsserv.getdata(val).subscribe(resData =>{
+    //   if(resData.success == true){
+    //     this._flashmsg.show("Registration Done!!!",{cssClass:'alert-success',timeout:6000});
+    //     this._router.navigate(['/login'])
+    //   }else{
+    //     this._flashmsg.show("Error!!",{cssClass:'alert-danger',timeout:6000})
+    //     this._router.navigate(['/register'])      
+    // }
+    console.log(resData)
+    })
   }
   }
 }
