@@ -1,0 +1,23 @@
+<p>
+  add-contact works!
+</p>
+
+<div class="container">
+  <form #contactform = "ngForm" (ngSubmit)="onSubmit(contactform.value)">
+    <div class="form-group">
+      <input type="text" class="form-control" name="createdby" value="{{val}}" disabled>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="name" placeholder="Name" ngModel>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="email" placeholder="Email" ngModel>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="phone" placeholder="Phone" ngModel>
+    </div>
+    <div class="form-group">
+      <button type = "submit" class="btn btn-outline-primary">Add</button>
+    </div>
+  </form>
+</div>

@@ -12,6 +12,7 @@ export class ImsserviceService {
   private _getUrl = "/api/alldata";
   private _loginUrl = "/api/authenticate";
   private _proUrl="/api/profile";
+  private _contactUrl = "/api/data";
   authToken:any;
   user:any;
 
@@ -54,6 +55,7 @@ export class ImsserviceService {
   storeUser(token,user){
     localStorage.setItem('id_token',token);
     localStorage.setItem('user',JSON.stringify(user));
+    localStorage.setItem('name',user.name)
     // console.log(user)
     this.authToken = token;
     this.user = user;
@@ -63,5 +65,12 @@ export class ImsserviceService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+  }
+
+  sendContact(data){
+    let headers = new Headers({'Content-Type':'application/json'})
+    let options = new RequestOptions({ headers:headers})
+    return this._http.post(this._contactUrl, JSON.stringify(data),options)
+    .pipe(map((response: Response) => response.json()));
   }
 }

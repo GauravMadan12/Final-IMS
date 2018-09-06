@@ -12,6 +12,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {AuthGuard} from './guard/auth.guard';
+import { AddContactComponent } from './add-contact/add-contact.component';
+import { MessageComponent } from './message/message.component';
+import { MailComponent } from './mail/mail.component';
+import { GroupComponent } from './group/group.component';
 
 
 @NgModule({
@@ -20,7 +24,11 @@ import {AuthGuard} from './guard/auth.guard';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddContactComponent,
+    MessageComponent,
+    MailComponent,
+    GroupComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const Regis = require('../models/register')
+const Contact = require('../models/contact')
 const bcrypt =require('bcrypt')
 const config = require('../config/database')
 const passport = require('passport')
@@ -77,4 +78,22 @@ router.post('/authenticate',(req,res,next) =>{
 router.get('/profile',passport.authenticate('jwt',{session:false}),(req,res,next)=>{
     res.json({user:req.user})
 }) 
+
+// Save contact
+router.post('/data',function(req,res){
+    console.log("Add contacts to DB")
+    var newContact = new Contact()
+    newContact.createdby = req.body.createdby;
+    newContact.name = req.body.name;
+    newContact.email = req.body.email;
+    newContact.phone = req.body.phone;
+    newContact.save(function(err,insertedData){
+        if(err){
+            console.log("Error saving data")
+        }
+        else{
+            res.json(insertedData)
+        }
+    })
+})
 module.exports = router;

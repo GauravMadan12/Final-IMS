@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.imsserv.getProfile().subscribe(data => {
       this.user = data.user;
-      console.log(data)
+      // console.log(data)
     },
     err => {
       console.log(err)
