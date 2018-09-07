@@ -15,6 +15,7 @@ export class ImsserviceService {
   private _contactUrl = "/api/data";
   private _mailUrl = "/api/mails";
   private _alluserUrl = "/api/usercontact";
+  private _groupMail = "/api/gpmails";
   authToken:any;
   user:any;
 
@@ -80,7 +81,7 @@ export class ImsserviceService {
   sendMsg(msg){
   let headers = new Headers({'Content-Type':'application/json'})
   let options = new RequestOptions({ headers:headers})
-  return this._http.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles="+msg.mobiles+"&authkey=228815AVZ7FrV8NH5b5dd1ed&country=91&message="+msg.message,options)
+  return this._http.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles="+msg.mobiles+"&authkey=#########&country=91&message="+msg.message,options)
   .pipe(map((response: Response) => response.json()));
     // console.log(msg)
 }
@@ -98,5 +99,19 @@ sendMail(val){
   return this._http.post(this._alluserUrl, {user},options)                                                                    
   .pipe(map((response: Response) => response.json()));
   // console.log(user)
+}
+
+sendGpMail(value,data,sub){
+  let headers = new Headers({'Content-Type':'application/json'})
+  let options = new RequestOptions({ headers:headers})
+  return this._http.post(this._groupMail,{value,data,sub},options)                                                                    
+  .pipe(map((response: Response) => response.json()));
+}
+
+sendMessage(val,msg){
+  let headers = new Headers({'Content-Type':'application/json'})
+  let options = new RequestOptions({ headers:headers})
+  return this._http.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles="+val+"&authkey=#######&country=91&message="+msg,options)
+  .pipe(map((response: Response) => response.json()));
 }
 }

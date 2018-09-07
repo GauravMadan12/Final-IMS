@@ -1,6 +1,6 @@
-<p>
+<!-- <p>
   group works!
-</p>
+</p> -->
 
 <!-- <div *ngFor="let ele of data">
   <h2 class="page-header">{{data.name}}</h2>
@@ -10,13 +10,13 @@
     <li class="list-group-item">Lname:{{ele.phone}} </li>
   </ul>
 </div> -->
-
-
+<div class="container">
+<h3>Your Contacts are</h3>
 <div class="card-body">    
   <table class="table table-hover">
       <thead>
           <tr>
-              <th></th>
+              <!-- <th></th> -->
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
@@ -24,7 +24,7 @@
       </thead>
       <tbody>
           <tr *ngFor="let ele of data">
-              <td><input type="checkbox"></td>
+              <!-- <td><input type="checkbox"></td> -->
               <td (click)="func(ele)">{{ele.name}}</td>
               <td>{{ele.email}}</td>
               <td>{{ele.phone}}</td>
@@ -32,3 +32,37 @@
       </tbody>
   </table>
   </div>
+
+  <hr>
+<h3>Selected Contacts are</h3>
+  <div *ngFor="let ele of name">
+    <span><b>{{ele}}</b></span>
+  </div>
+
+ <hr>
+  <div class="row">
+    <div class="col-md-6">
+  <h3>Group Mail</h3>
+      <form #grpform="ngForm" (ngSubmit)="onSubmit(grpform.value)">
+        <div class="form-group">
+            <input type="text" class="form-control" ngModel name="subject" placeholder="Subject">
+        </div> 
+        <div class="form-group">
+            <textarea class="form-control" ngModel name="message" placeholder="Message"></textarea>
+        </div>    
+        <button class="btn btn-primary" type="submit">Send Mail</button>
+    </form>
+    </div>
+    <div class="col-md-6">
+     <h3>Group Message</h3>
+     <form #msgform="ngForm" (ngSubmit)="sendMsg(msgform.value)">
+        <div class="form-group">
+            <input type="text" class="form-control" ngModel name="msg" placeholder="Message">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Send Message</button>    
+        </div>
+    </form>
+    </div>
+  </div>
+</div>

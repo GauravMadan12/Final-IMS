@@ -1,4 +1,4 @@
 module.exports ={
-    database: "mongodb://gauravuser:gauravgreat12@ds225902.mlab.com:25902/imsdata",
+    database: "database link here",
     secret:'oursecret'
 }
