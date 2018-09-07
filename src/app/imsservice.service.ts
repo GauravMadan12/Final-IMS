@@ -13,6 +13,8 @@ export class ImsserviceService {
   private _loginUrl = "/api/authenticate";
   private _proUrl="/api/profile";
   private _contactUrl = "/api/data";
+  private _mailUrl = "/api/mails";
+  private _alluserUrl = "/api/usercontact";
   authToken:any;
   user:any;
 
@@ -56,6 +58,7 @@ export class ImsserviceService {
     localStorage.setItem('id_token',token);
     localStorage.setItem('user',JSON.stringify(user));
     localStorage.setItem('name',user.name)
+    localStorage.setItem('email',user.email)
     // console.log(user)
     this.authToken = token;
     this.user = user;
@@ -73,4 +76,27 @@ export class ImsserviceService {
     return this._http.post(this._contactUrl, JSON.stringify(data),options)
     .pipe(map((response: Response) => response.json()));
   }
+
+  sendMsg(msg){
+  let headers = new Headers({'Content-Type':'application/json'})
+  let options = new RequestOptions({ headers:headers})
+  return this._http.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles="+msg.mobiles+"&authkey=228815AVZ7FrV8NH5b5dd1ed&country=91&message="+msg.message,options)
+  .pipe(map((response: Response) => response.json()));
+    // console.log(msg)
+}
+
+sendMail(val){
+  let headers = new Headers({'Content-Type':'application/json'})
+  let options = new RequestOptions({ headers:headers})
+  return this._http.post(this._mailUrl, JSON.stringify(val),options)                                                                    
+  .pipe(map((response: Response) => response.json()));
+}
+  
+  getContacts(user){
+    let headers = new Headers({'Content-Type':'application/json'})
+  let options = new RequestOptions({ headers:headers})
+  return this._http.post(this._alluserUrl, {user},options)                                                                    
+  .pipe(map((response: Response) => response.json()));
+  // console.log(user)
+}
 }

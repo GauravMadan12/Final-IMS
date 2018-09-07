@@ -1,3 +1,35 @@
 <p>
   mail works!
 </p>
+
+<div class="container">
+  
+<form #mailform = "ngForm" (ngSubmit) = "onSendMail(mailform.value)" >
+  <h1>Send Mail</h1>
+  {{msg}}
+  <div class="form-group">
+      <label>From</label>
+      <input type="text" class="form-control" required ngModel name="from">
+  </div>
+
+  <div class="form-group">
+      <label >To</label>
+      <input type="text" class="form-control" required ngModel name="to">
+  </div>
+  
+  <div class="form-group">
+      <label >Subject</label>
+      <input type="text" class="form-control" required ngModel name="subject" >
+  </div>
+
+  <div class="form-group">
+      <label>Message</label>
+      <input type="text" class="form-control" required ngModel name="message">
+  </div>
+
+  <div class="form-group">
+      <button class="btn btn-success">Send</button>
+  </div>
+</form>
+
+</div>

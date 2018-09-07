@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ImsserviceService} from '../imsservice.service';
 
 @Component({
   selector: 'app-mail',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private imsserv:ImsserviceService) { }
 
   ngOnInit() {
   }
 
+  onSendMail(val){
+    this.imsserv.sendMail(val).subscribe(resData => console.log(resData))
+}
 }

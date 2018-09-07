@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ImsserviceService} from '../imsservice.service';
 
 @Component({
   selector: 'app-group',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupComponent implements OnInit {
 
-  constructor() { }
+  user:any
+  data:any;
+  constructor(private imsserv:ImsserviceService) { }
 
   ngOnInit() {
+    this.user = localStorage.getItem('name');
+    this.imsserv.getContacts(this.user).subscribe(resData => {
+    
+      this.data = resData;
+      console.log(this.data);
+    });
+
   }
+
 
 }
