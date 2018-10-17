@@ -31,6 +31,6 @@ export class AppComponent {
      }else{
        this.value = true;
      }
-    console.log("Value is"+data)
+    // console.log("Value is"+data)
   }
 }

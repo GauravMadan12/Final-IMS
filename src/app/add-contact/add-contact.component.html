@@ -1,23 +1,29 @@
-<p>
-  add-contact works!
-</p>
-
 <div class="container">
+  <h1>Add Contact</h1>
   <form #contactform = "ngForm" (ngSubmit)="onSubmit(contactform.value)">
     <div class="form-group">
       <input type="text" class="form-control" name="createdby" value="{{val}}" disabled>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" name="name" placeholder="Name" ngModel>
+      <input type="text" class="form-control" name="name" placeholder="Name" ngModel #nameinput="ngModel" required>
+      <div *ngIf = "nameinput.errors">
+          <small  class = "text-danger"  *ngIf = "nameinput.errors.required && nameinput.touched">*Name is required</small>
+      </div>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" name="email" placeholder="Email" ngModel>
+      <input type="text" class="form-control" name="email" placeholder="Email" ngModel #emailinput="ngModel" required>
+      <div *ngIf = "emailinput.errors">
+          <small  class = "text-danger"  *ngIf = "emailinput.errors.required && emailinput.touched">*Email is required</small>
+      </div>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" name="phone" placeholder="Phone" ngModel>
+      <input type="text" class="form-control" name="phone" placeholder="Phone" ngModel #phoneinput="ngModel"  minlength="10" maxlength="10" required>
+      <div *ngIf = "phoneinput.errors">
+          <small  class = "text-danger"  *ngIf = "phoneinput.errors.required && phoneinput.touched">*Phone is required</small>
+     </div>
     </div>
     <div class="form-group">
-      <button type = "submit" class="btn btn-outline-primary">Add</button>
+      <button type = "submit" class="btn btn-outline-primary" [disabled]="contactform.invalid">Add</button>
     </div>
   </form>
 </div>

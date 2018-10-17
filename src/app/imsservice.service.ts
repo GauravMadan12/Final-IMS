@@ -13,7 +13,7 @@ export class ImsserviceService {
   private _loginUrl = "/api/authenticate";
   private _proUrl="/api/profile";
   private _contactUrl = "/api/data";
-  private _mailUrl = "/api/mails";
+  private _mailUrl = "/ api/mails";
   private _alluserUrl = "/api/usercontact";
   private _groupMail = "/api/gpmails";
   authToken:any;
@@ -48,7 +48,7 @@ export class ImsserviceService {
   loadToken(){
     const token = localStorage.getItem('id_token');
     this.authToken = token;
-    // console.log(token);
+    console.log(token);
   }
 
   loggedIn(){
@@ -60,7 +60,7 @@ export class ImsserviceService {
     localStorage.setItem('user',JSON.stringify(user));
     localStorage.setItem('name',user.name)
     localStorage.setItem('email',user.email)
-    // console.log(user)
+    console.log(user)
     this.authToken = token;
     this.user = user;
   }
@@ -81,7 +81,7 @@ export class ImsserviceService {
   sendMsg(msg){
   let headers = new Headers({'Content-Type':'application/json'})
   let options = new RequestOptions({ headers:headers})
-  return this._http.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles="+msg.mobiles+"&authkey=#########&country=91&message="+msg.message,options)
+  return this._http.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles="+msg.mobiles+"&authkey=228815AVZ7FrV8NH5b5dd1ed&country=91&message="+msg.message,options)
   .pipe(map((response: Response) => response.json()));
     // console.log(msg)
 }
@@ -106,12 +106,15 @@ sendGpMail(value,data,sub){
   let options = new RequestOptions({ headers:headers})
   return this._http.post(this._groupMail,{value,data,sub},options)                                                                    
   .pipe(map((response: Response) => response.json()));
+  // console.log("VAlue"+value)
+  // console.log("data"+data)
+  // console.log("Subject"+sub)
 }
 
 sendMessage(val,msg){
   let headers = new Headers({'Content-Type':'application/json'})
   let options = new RequestOptions({ headers:headers})
-  return this._http.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles="+val+"&authkey=#######&country=91&message="+msg,options)
+  return this._http.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles="+val+"&authkey=228815AVZ7FrV8NH5b5dd1ed&country=91&message="+msg,options)
   .pipe(map((response: Response) => response.json()));
 }
 }

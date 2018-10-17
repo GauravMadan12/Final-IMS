@@ -50,3 +50,62 @@ header{
     border-radius:9px;
     border-color:red;
 }
+
+/* .footer ul{
+    display: flex;
+    position: absolute; 
+    transform:translate(-50%,-50%);
+} */
+
+.footer ul li{
+    list-style: none;
+    display:inline-block; 
+    padding: 4%;
+    align: center;
+}
+
+.footer ul li i{
+    width:80px;
+    height:80px;
+    background: #fff;
+    text-align: center;
+    line-height: 80px;
+    font-size: 25px;
+    /* margin:0 10px; */
+    display: black;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border:3px solid #fff;
+}
+
+.footer ul li a .fa{
+    position: relative;
+    color:#262626;
+    transition: .5s;
+}
+
+.footer ul li a:hover .fa{
+    transform: rotateY(360deg);
+}
+
+.carousel-caption {
+    position: absolute;
+    z-index: 1;
+    display:table;
+    width:100%;
+    height:100%;
+}
+
+.carousel-caption div {
+    display:table-cell;
+    vertical-align: middle;
+    text-align:center;
+}
+
+/* .trickcenter {
+    position: fixed;
+    top: 84%; // 50% for perfect centering
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */

@@ -25,7 +25,7 @@ export class GroupComponent implements OnInit {
     this.imsserv.getContacts(this.user).subscribe(resData => {
     
       this.data = resData;
-      console.log(this.data);
+      // console.log(this.data);
     });
 
   }
@@ -34,6 +34,7 @@ export class GroupComponent implements OnInit {
     this.email.push(val.email)
     this.name.push(val.name)
     this.num.push(val.phone)
+    console.log(this.email)
   }
 
   onSubmit(data){

@@ -31,9 +31,6 @@ export class RegisterComponent implements OnInit {
 
   onRegis(val){
     console.log(val)
-    // if(!this._validserv.isComp(val)){
-    //   this._toastrserv.Error("Please fill all the fields")
-    // }else
     if(!this._validserv.isValid(val.email)){
       this._flashmsg.show("Please enter a Valid Email",{cssClass:'alert-danger',timeout:6000})
     }
@@ -43,14 +40,14 @@ export class RegisterComponent implements OnInit {
     }else{
       
     this._imsserv.getdata(val).subscribe(resData =>{
-    //   if(resData.success == true){
-    //     this._flashmsg.show("Registration Done!!!",{cssClass:'alert-success',timeout:6000});
-    //     this._router.navigate(['/login'])
-    //   }else{
-    //     this._flashmsg.show("Error!!",{cssClass:'alert-danger',timeout:6000})
-    //     this._router.navigate(['/register'])      
-    // }
-    console.log(resData)
+      if(resData){
+        this._flashmsg.show("Registration Done!!!",{cssClass:'alert-success',timeout:6000});
+        this._router.navigate(['/login'])
+      }else{
+        this._flashmsg.show("Error!!",{cssClass:'alert-danger',timeout:6000})
+        this._router.navigate(['/register'])      
+    }
+    // console.log(resData)
     })
   }
   }

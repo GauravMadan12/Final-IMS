@@ -107,7 +107,7 @@ router.post('/mails',(req,res)=>{
         service:'gmail',
         auth: {
             user: 'gmadan046@gmail.com', // generated ethereal user
-            pass: '#######' // generated ethereal password
+            pass: 'gauravgreat@12' // generated ethereal password
         },
         tls:{
             rejectUnauthorized:false
@@ -166,7 +166,7 @@ router.post('/usercontact',function(req,res){
       service:'gmail',
       auth: {
           user: 'gmadan046@gmail.com', // generated ethereal user
-          pass: '######' // generated ethereal password
+          pass: 'gauravgreat@12' // generated ethereal password
       },
       tls:{
           rejectUnauthorized:false
@@ -195,4 +195,7 @@ router.post('/usercontact',function(req,res){
   });
 });
 
+router.get('/show',(req,res)=>{
+       res.send(Regis.find({}));    
+})
 module.exports = router;
