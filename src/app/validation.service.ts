@@ -22,4 +22,8 @@ export class ValidationService {
     return rex.test(val)
   }
   
+  isName(val){
+    const rex = /^[a-zA-Z\s]+$/;
+    return rex.test(val);
+  }
 }

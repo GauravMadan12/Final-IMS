@@ -9,6 +9,7 @@ import { AddContactComponent } from './add-contact/add-contact.component';
 import { MessageComponent } from './message/message.component';
 import { MailComponent } from './mail/mail.component';
 import { GroupComponent } from './group/group.component';
+import {FileComponent} from './file/file.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
+  {path:'file',component:FileComponent},
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard],
    children:[{path:'',redirectTo:'/dashboard',pathMatch:'full'},
               { path:'addcontact',component:AddContactComponent,canActivate:[AuthGuard]},

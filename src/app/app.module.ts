@@ -16,6 +16,9 @@ import { AddContactComponent } from './add-contact/add-contact.component';
 import { MessageComponent } from './message/message.component';
 import { MailComponent } from './mail/mail.component';
 import { GroupComponent } from './group/group.component';
+import { FileComponent } from './file/file.component';
+import {FileUploadModule} from 'ng2-file-upload';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -28,14 +31,17 @@ import { GroupComponent } from './group/group.component';
     AddContactComponent,
     MessageComponent,
     MailComponent,
-    GroupComponent
+    GroupComponent,
+    FileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
     FormsModule,
-    FlashMessagesModule
+    FlashMessagesModule,
+    FileUploadModule,
+    HttpClientModule
   ],
   providers: [FlashMessagesService,AuthGuard],
   bootstrap: [AppComponent]

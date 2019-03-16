@@ -3,6 +3,9 @@ import {Http,Response, Headers,RequestOptions} from '@angular/http';
 import { map } from 'rxjs/operators';
 import {Register} from './register';
 import {tokenNotExpired} from 'angular2-jwt';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import 'rxjs/Rx';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +22,9 @@ export class ImsserviceService {
   authToken:any;
   user:any;
 
-  constructor(private _http:Http) { }
+  constructor(private _http:Http,
+        private http:HttpClient
+    ) { }
 
   getdata(val){
  
@@ -114,7 +119,17 @@ sendGpMail(value,data,sub){
 sendMessage(val,msg){
   let headers = new Headers({'Content-Type':'application/json'})
   let options = new RequestOptions({ headers:headers})
-  return this._http.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles="+val+"&authkey=228815AVZ7FrV8NH5b5dd1ed&country=91&message="+msg,options)
+  return this._http.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles="+val+"&authkey=##################&country=91&message="+msg,options)
   .pipe(map((response: Response) => response.json()));
 }
+
+// File Downloading 
+downloadFile(file:string){
+  var body = {filename:file};
+  return this.http.post("http://localhost:3000/file/download",body,{
+    responseType : 'blob',
+    headers:new HttpHeaders().append('Content-Type','application/json')
+  });
+}
+
 }

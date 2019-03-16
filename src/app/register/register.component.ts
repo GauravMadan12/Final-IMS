@@ -31,6 +31,10 @@ export class RegisterComponent implements OnInit {
 
   onRegis(val){
     console.log(val)
+       
+    if(!this._validserv.isName(val.fname)){
+      this._flashmsg.show("Please enter a Valid First Name",{cssClass:'alert-danger',timeout:6000})
+    }else
     if(!this._validserv.isValid(val.email)){
       this._flashmsg.show("Please enter a Valid Email",{cssClass:'alert-danger',timeout:6000})
     }

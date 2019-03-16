@@ -4,6 +4,7 @@ const path = require('path');
 const passport = require('passport')
 const cors = require('cors')
 const api = require('./server/routes/api');
+const fileRoutes = require('./server/routes/file');
 
 const port = 3000;
 
@@ -28,6 +29,7 @@ app.use(passport.session())
 
 require('./server/config/passport')(passport);
 app.use('/api',api);
+app.use('/file',fileRoutes);
 
 app.get('*',(req,res)=>{
     res.sendFile(path.join(__dirname,'dist/ims/index.html'))
